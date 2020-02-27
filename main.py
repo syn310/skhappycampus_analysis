@@ -10,10 +10,10 @@ app = Flask(__name__)
 api = Api(app)
  
 mariadb = MySQL()
-app.config['MYSQL_DATABASE_USER'] = 'mgmtsv'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'mgmtsv1!'
-app.config['MYSQL_DATABASE_DB'] = 'mgmtsv'
-app.config['MYSQL_DATABASE_HOST'] = '169.56.124.189'
+app.config['MYSQL_DATABASE_USER'] = 'root'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'skcc'
+app.config['MYSQL_DATABASE_DB'] = 'sv'
+app.config['MYSQL_DATABASE_HOST'] = '172.22.11.1'
 mariadb.init_app(app)
  
 class RecommendCompany(Resource):
@@ -83,7 +83,7 @@ class RecommendCompany(Resource):
 
         return analyzed
  
-api.add_resource(RecommendCompany, '/analysis/<int:_serialNo>/<string:_userId>', endpoint='analysis')
+api.add_resource(RecommendCompany, '/analysis/<string:_serialNo>/<string:_userId>', endpoint='analysis')
  
 if __name__ == '__main__':
     app.run(port=8082, debug=True)
